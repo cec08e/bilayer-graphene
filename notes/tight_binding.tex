@@ -125,6 +125,48 @@ our chain:
 \item The interatomic spacing - distance between sites - is denoted $a$.
 \end{itemize}
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{figure_6}
+\caption{One dimensional chain of atomic sites. There is a single orbital at each site, denoted by $\ket{i}$. Interatomic spacing is $a$.}
+\end{figure}
+
+As before, we will consider a single electron moving around the chain of sites. The wavefunction for the electron is a linear combination of the atomic orbitals.
+$$\ket{\psi} = \sum_{n = 1}^{N} = c_{n}\ket{n}$$
+As before, we will use the Schroedinger equation to establish the eigenenergies and eigenstates of the system.
+$$H\ket{\psi} = E\ket{\psi}$$
+We observe the following about the Hamiltonian $H$:
+$$ H = K + \sum_{j} V_{j} $$
+$$ H_{nm} = \bra{n}H\ket{m} $$
+where, as before, $K$ is the kinetic energy of the electron and $V_{j}$ is the Coulomb interaction due to site $j$. We can derive the elements of the
+Hamiltonian matrix, $H_{nm}$, as follows:
+$$ H\ket{m} = (K + \sum_{j}V_{j})\ket{m} $$
+$$ = (K + V_{m})\ket{m} + \sum_{j \neq m}V_{j}\ket{m}$$
+$$ = E_{0}\ket{m} + \sum_{j \neq m}V_{j}\ket{m} $$
+where $E_{0}$ here is meant to be the energy associated with the orbital on a single atomic site. Therefore,
+$$ \bra{n}H\ket{m} = E_{0}\bra{n}\ket{m} + \sum_{j \neq m}\bra{n}V_{j}\ket{m}$$
+$$ = \delta_{nm} + \sum_{j \neq m}\bra{n}V_{j}\ket{m}$$
+The last term can be summarized in the following way:
+$$ \sum_{j \neq m}\bra{n}V_{j}\ket{m} = \left\{\begin{matrix}
+                                                  V_{0}  &  n = m\\
+                                                  -t  &  n = m \pm 1\\
+                                                  0  & otherwise
+                                                    \end{matrix}\right.$$
+The idea is the following:
+\begin{itemize}
+\item In the case $n = m$, $V_{0}$ represents a sum of all $V_{cross}$ terms over the lattice. That is, it is the shift in the
+      site energy due to Coulomb interactions with other sites.
+\item When $n = m \pm 1$, then $\ket{n}$ and $\ket{m}$ are nearest neighbors. In that case, $\bra{n}V_{n}\ket{m}$ is defined to be $-t$,
+the hopping term that takes the electron from site $m$ to site $n$. All other contributions in the sum vanish -- that is, we only consider
+nearest neighbor hopping (right?).
+
+\end{itemize}
+Therefore, the elements of the Hamiltonian are given by
+$$ \bra{n}H\ket{m} = (E_{0} + V_{0})\delta_{nm} - t(\delta_{n+1,m} + \delta_{n-1,m}) $$
+The Ansatz solution for the eigenstate is given (in component form) as:
+$$ c_{n} = \frac{e^{-ikna}}{\sqrt{N}} $$
+where $c_{n}$ is the probability amplitude of the state $\ket{n}$, $k$ is the wavevector of the electron, and the $1/\sqrt{N}$ term normalizes the wavefunction.
+
 \begin{thebibliography}{9}
 \bibitem{oxford}
 Steven H. Simon.
