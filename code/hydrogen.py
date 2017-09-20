@@ -23,7 +23,7 @@ def plot_radial_prob(ax = None):
         :param ax: Optional Axes object to which the plot should be added. If not supplied, defaults to plotting on global plt object.
         :type ax: Axes instance.
 
-        TODO: Work out mirror image plot. 
+        TODO: Work out mirror image plot.
     '''
 #    a_0 = 1.0
 #    r = np.linspace(2, 6, 100000)

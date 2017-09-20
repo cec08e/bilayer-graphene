@@ -165,8 +165,34 @@ Therefore, the elements of the Hamiltonian are given by
 $$ \bra{n}H\ket{m} = (E_{0} + V_{0})\delta_{nm} - t(\delta_{n+1,m} + \delta_{n-1,m}) $$
 The Ansatz solution for the eigenstate is given (in component form) as:
 $$ c_{n} = \frac{e^{-ikna}}{\sqrt{N}} $$
-where $c_{n}$ is the probability amplitude of the state $\ket{n}$, $k$ is the wavevector of the electron, and the $1/\sqrt{N}$ term normalizes the wavefunction.
-
+where $c_{n}$ is the probability amplitude of the state $\ket{n}$, $k$ is the wavevector of the electron, and the $1/\sqrt{N}$ term normalizes the wavefunction. TODO: Periodicity and boundary conditions.
+The periodicity of the solution can be examined by observing that $e^{-i2n\pi} = 1$ for arbitrary integer $n$ and writing
+$$ c_{n} = \frac{e^{-ikna}}{\sqrt{N}} = \frac{e^{-ikna}}{\sqrt{N}}e^{-i2n\pi} $$
+$$ = \frac{e^{-i(kna + 2n\pi)}}{\sqrt{N}} = \frac{e^{-i(k + 2\pi/a)na}}{\sqrt{N}}$$
+Therefore the solution for $k$ is identical to the solution for $k + 2\pi/a$. When we enforce the periodic boundary conditions that site $n = 1$ is equivalent to site $n = N+1$, we find that $k$ is quantized
+in units of $2\pi/Na$. Explicitly,
+$$c_{1} = c_{N+1}$$
+$$ \frac{e^{-ika}}{\sqrt{N}} = \frac{e^{-ik(N+1)a}}{\sqrt{N}}$$
+$$ 1 = e^{-ikNa} $$
+The above equation can only be true if $k$ is an integer multiple of $2\pi/Na$. \par
+Now, if we plug our ansatz into the system of equations produced by the Schroeding equation,
+$$ \sum_{m}H_{nm}c_{m} = Ec_{n}$$
+$$ \sum_{m}H_{nm}\frac{e^{-ikma}}{\sqrt{N}} = E\frac{e^{-ikna}}{\sqrt{N}}$$
+$$ \sum_{m}[(E_{0} + V_{0})\delta_{nm} - t(\delta_{n+1,m} + \delta_{n-1,m})]\frac{e^{-ikma}}{\sqrt{N}} = E\frac{e^{-ikna}}{\sqrt{N}}$$
+$$ (E_{0} + V_{0})\frac{e^{-ikna}}{\sqrt{N}} - t\left (\frac{e^{-ik(n+1)a}}{\sqrt{N}} + \frac{e^{-ik(n-1)a}}{\sqrt{N}}\right ) = E\frac{e^{-ikna}}{\sqrt{N}}$$
+$$  (E_{0} + V_{0})\frac{e^{-ikna}}{\sqrt{N}} - t\frac{e^{-ikna}}{\sqrt{N}}2cos(ka) = E\frac{e^{-ikna}}{\sqrt{N}} $$
+$$ (E_{0} + V_{0}) - t2cos(ka) = E$$
+The last equation is our dispersion relation $E(k)$, which describes the range of allowed energies for an electron floating through the lattice. The dispersion relation is plotted in Figure 7.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{dispersion_1d}
+\caption{Dispersion relation for one-dimensional monoatomic chain with interatomic distance $a$. Dispersion relation is plotted in units of $t$, as a function of $ka$, allowing $(E_{0} + V_{0})$ to vanish.}
+\end{figure}
+There are a few observations we can make from the plot of the dispersion relation. The first is that the width of the allowed energies is a function of the hopping element $t$. There is at least one $k$-state that has an energy in this band. The allowed
+values for $ka$ are functions of $N$ such that
+$$ ka = \frac{2\pi}{N}m $$
+where m is some integer. Therefore, when N = 1 (the one site limit), $k$ can only take on values $0$, $2\pi$, $4\pi$, etc. - all of which map to the same energy so only a single energy is allowed. As N grows, we increase the number of allowed $ka$ values
+within a $2\pi$ range and, therefore, increase the number of discrete energy levels until the band is saturated in the $N \rightarrow \infty$ limit. 
 \begin{thebibliography}{9}
 \bibitem{oxford}
 Steven H. Simon.
