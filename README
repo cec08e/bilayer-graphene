@@ -10,3 +10,4 @@ To deactivate the virtual environment:
 
 $ deactivate bgenv
 
+Note that the requirements.txt file contains the requirements for the code directory files, but not for the notes directory files. 
