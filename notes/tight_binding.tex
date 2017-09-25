@@ -211,7 +211,17 @@ To see the effect of multiple orbitals per site, we will consider an extension o
 
 \section{Monolayer Graphene}
 We now use the tight binding model to analyze the band structure of a single layer of graphene. Graphene can be thought of as a lattice where each site contains the unit cell shown in Figure 8. That is, each site in
-the lattice contains two carbon atoms, which we will label $A$ and $B$. From each carbon atom, we only consider a single $2p_{z}$ orbital. As described in the first section, the remaining valence electrons are tied
+the lattice contains two carbon atoms, which we will label $A$ and $B$.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{monolayer}
+\caption{Diagram of hexagonal lattice structure of monolayer graphene. The unit cell is outlined with a dashed line, containing two carbon atoms labeled $A$ and $B$. denoted by $\ket{i}$. The width of the honeycomb is $a$, which
+yields two primitive lattice vectors $\vec{a}_{1} = (\frac{a}{2}, \frac{\sqrt{3}a}{2})$ and $\vec{a}_{2} = (\frac{a}{2}, -\frac{\sqrt{3}a}{2})$.}
+\end{figure}
+
+From each carbon atom, we only consider a single $2p_{z}$ orbital. As described in the first section, the remaining valence electrons are tied
 up in $\sigma$ bonds via $sp^{2}$ hybridization. Let's begin by writing down the very general electronic wavefunction.
 $$\psi_{k} = \sum_{m = 1}^{M} c_{m}\Phi_{m}$$
 where $\Phi_{m}$ is the Bloch state defined by
@@ -244,8 +254,32 @@ $$\bra{\phi_{A}}\ket{\psi_{k}} = c_{A} + c_{B}\bra{\phi_{A}}\ket{\phi_{B}}(1 + e
 $$\bra{\phi_{B}}\ket{\psi_{k}} = c_{B} + c_{A}\bra{\phi_{B}}\ket{\phi_{A}}(1 + e^{i\vec{k}\cdot\vec{a}_{1}} + e^{i\vec{k}\cdot-\vec{a}_{2}})$$
 
 Evaluating the numerator gives us
-$$\bra{\phi_{A}}\Delta U_{A}\ket{\psi_{k}} = $$
-$$\bra{\phi_{B}}\Delta U_{B}\ket{\psi_{k}} = $$
+$$\bra{\phi_{A}}\Delta U_{A}\ket{\psi_{k}} = c_{B}\bra{\phi_{A}}\Delta U_{A}\ket{\phi_{B}}(1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}})$$
+$$\bra{\phi_{B}}\Delta U_{B}\ket{\psi_{k}} = c_{A}\bra{\phi_{B}}\Delta U_{B}\ket{\phi_{A}}(1 + e^{i\vec{k}\cdot\vec{a}_{1}} + e^{i\vec{k}\cdot-\vec{a}_{2}})$$
+
+Now, we'll simplify things by introducing some shorthand notation. Let
+$$ \alpha =  1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}}$$
+$$ \gamma_{0} = \bra{\psi_{A}}\ket{\psi_{B}} = \bra{\psi_{B}}\ket{\psi_{A}}$$
+$$ \gamma_{1} = \bra{\psi_{A}}\Delta U_{A}\ket{\psi_{B}} = \bra{\psi_{B}}\Delta U_{B}\ket{\psi_{B}}$$
+
+To remind ourselves, our equation for $E_{\vec{k}}$ is
+$$E(\vec{k}) = \frac{\bra{\phi_{A,B}}\Delta U_{A,B}\ket{\psi_{k}}}{\bra{\phi_{A,B}}\ket{\psi_{k}}}$$
+and with the values we've calculated, we obtain the following system of equations:
+$$E(\vec{k})(c_{A} + \alpha\gamma_{0}c_{B}) = \alpha\gamma_{1}c_{B}$$
+$$E(\vec{k})(c_{B} + \alpha^{*}\gamma_{0}c_{A}) = \alpha^{*}\gamma_{1}c_{A}$$
+So, the eigenvalue equation is given by
+
+$$
+\begin{bmatrix}
+E(\vec{k}) & \alpha\gamma_{0}E(\vec{k}) - \alpha\gamma_{1}\\
+  \alpha^{*}\gamma_{0}E(\vec{k}) - \alpha^{*}\gamma_{1} & E(\vec{k})
+\end{bmatrix}
+\begin{bmatrix}
+c_{A} \\
+c_{B}
+\end{bmatrix}
+= 0
+$$
 
 
 \begin{thebibliography}{9}
