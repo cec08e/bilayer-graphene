@@ -192,12 +192,77 @@ There are a few observations we can make from the plot of the dispersion relatio
 values for $ka$ are functions of $N$ such that
 $$ ka = \frac{2\pi}{N}m $$
 where m is some integer. Therefore, when N = 1 (the one site limit), $k$ can only take on values $0$, $2\pi$, $4\pi$, etc. - all of which map to the same energy so only a single energy is allowed. As N grows, we increase the number of allowed $ka$ values
-within a $2\pi$ range and, therefore, increase the number of discrete energy levels until the band is saturated in the $N \rightarrow \infty$ limit. 
+within a $2\pi$ range and, therefore, increase the number of discrete energy levels until the band is saturated in the $N \rightarrow \infty$ limit.
+
+
+\subsection{Arbitrary Crystal Structure}
+Now, we shift our focus to applying the tight binding model to an arbitrary crystal structure with multiple orbitals per site. Our discussion will closely follow that found in \cite{mccann}. In the general case, we have
+$N$ identical atomics sites with $M$ orbitals per site. For each of the $M$ orbitals, we can write down a Bloch state which represents the wavefunction of the electron in the periodically repeating lattice.
+
+$$ \Phi_m = \frac{1}{\sqrt{N}}\sum_{n = 1}^{N}e^{i\vec{k}\cdot\vec{R}_{m,n}}\phi_{m}{\vec{r} - \vec{R}_{m,n}} $$
+
+where $\phi_{m}$ is the $m$th orbital and $\vec{R}_{m,n}$ is the corresponding position of this orbital on the $n$th site. We should notice that these Bloch states are simply generalizations of the one-dimensional, single
+orbital solution. The full electronic wave function is a sum over the $M$ bloch states and is given by
+$$ \psi = \sum_{m = 1}^{M}c_{m}\Phi_m$$
+where $c_m$ are the coefficients of linear superposition. To determine these coefficients, we can plug our expression for $\psi$ into the Schroedinger equation.
+\subsubsection{One dimensional chain of atomic sites revisited}
+To see the effect of multiple orbitals per site, we will consider an extension of the one-dimensional chain where each atomic site has two orbitals. TODO: Finish section.
+
+
+\section{Monolayer Graphene}
+We now use the tight binding model to analyze the band structure of a single layer of graphene. Graphene can be thought of as a lattice where each site contains the unit cell shown in Figure 8. That is, each site in
+the lattice contains two carbon atoms, which we will label $A$ and $B$. From each carbon atom, we only consider a single $2p_{z}$ orbital. As described in the first section, the remaining valence electrons are tied
+up in $\sigma$ bonds via $sp^{2}$ hybridization. Let's begin by writing down the very general electronic wavefunction.
+$$\psi_{k} = \sum_{m = 1}^{M} c_{m}\Phi_{m}$$
+where $\Phi_{m}$ is the Bloch state defined by
+$$\Phi_{m} = \frac{1}{\sqrt{N}}\sum_{n=1}^{N} e^{i\vec{k}\cdot\vec{R}_{n}}\phi_{m}(\vec{r} - \vec{R}_{n})$$
+The vector $\vec{R}_{n}$ represents the position of the $n$th unit cell over a total of $N$ unit cells. In our case, the index $m$ will only sum over the sites $A$ and $B$ within the unit cell.
+Therefore, in the case of monolayer graphene, we can explicitly write
+$$ \psi_{k} = \frac{1}{\sqrt{N}}(c_{A}\sum_{n}e^{i\vec{k}\cdot\vec{R}_{n}}\phi_{A} + c_{B}\sum_{n}e^{i\vec{k}\cdot\vec{R}_{n}}\phi_{B}) $$
+where $\phi_{A}$ and $\phi_{B}$ are the $2p_{z}$ wavefunctions for sites $A$ and $B$, respectively. The Hamiltonian is directly analogous to the one-dimensional chain example:
+$$ H = K + \sum_{n}V_{A} + V_{B} $$
+where
+$$V_{A} = V(\vec{r} - \vec{r}_{A} - \vec{R}_n)$$
+$$V_{B} = V(\vec{r} - \vec{r}_{B} - \vec{R}_n)$$
+If we apply the Hamiltonian to the $\phi_{A}$ orbital, for example, we obtain the following:
+$$H\phi_{A} = (K + \sum_{n}V_{A} + V_{B})\phi_{A}$$
+$$ = E_{A} + [(\sum_{n, \vec{R}_{n} \neq 0}V_{A} + V_{B}) + V(\vec{r} - \vec{r}_{B})] \phi_{A}$$
+where $E_{A} = E_{B}$ is the energy of $2p_{z}$ orbital. We will simplify a bit by allowing $E_{A} = E_{B} = 0$. Therefore, we obtain the two equations
+$$H\phi_{A,B} = [(\sum_{n, \vec{R}_{n} \neq 0}V_{A} + V_{B}) + V(\vec{r} - \vec{r}_{B,A})] \phi_{A,B} = \Delta U_{A,B}\phi_{A,B}$$
+where we have defined $\Delta U$ as the potential energy term of the Hamiltonian. \par
+Now, we will apply the Hamiltonian to the electronic wavefunction $\psi_{k}$:
+$$H\psi_{k} = E(\vec{k})\psi_{k}$$
+From here, it is easy to see
+$$\bra{\phi_{A,B}}H\ket{\psi_{k}} = \bra{\phi_{A,B}}E(\vec{k})\ket{\psi_{k}}$$
+From which we obtain
+$$E(\vec{k}) = \frac{\bra{\phi_{A,B}}\Delta U_{A,B}\ket{\psi_{k}}}{\bra{\phi_{A,B}}\ket{\psi_{k}}}$$
+We begin by calculating the denominator terms. In the following, we take only nearest neighbor overlap terms into account. That is,
+$$\sum_{n}e^{i\vec{k}\cdot\vec{R}_{n}}\bra{\phi_{A}}\ket{\phi_{A}} = \bra{\phi_{A}}\ket{\phi_{A}} = 1$$
+$$\sum_{n}e^{i\vec{k}\cdot\vec{R}_{n}}\bra{\phi_{A}}\ket{\phi_{B}}) = \bra{\phi_{A}}\ket{\phi_{B}}(1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}})$$
+Now, we get, dropping the normalization factor,
+$$\bra{\phi_{A}}\ket{\psi_{k}} = c_{A} + c_{B}\bra{\phi_{A}}\ket{\phi_{B}}(1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}}) $$
+$$\bra{\phi_{B}}\ket{\psi_{k}} = c_{B} + c_{A}\bra{\phi_{B}}\ket{\phi_{A}}(1 + e^{i\vec{k}\cdot\vec{a}_{1}} + e^{i\vec{k}\cdot-\vec{a}_{2}})$$
+
+Evaluating the numerator gives us
+$$\bra{\phi_{A}}\Delta U_{A}\ket{\psi_{k}} = $$
+$$\bra{\phi_{B}}\Delta U_{B}\ket{\psi_{k}} = $$
+
+
 \begin{thebibliography}{9}
 \bibitem{oxford}
 Steven H. Simon.
 \textit{Lecture Notes for Solid State Physics}.
 Oxford University, 2012.
+
+\bibitem{mccann}
+Edward McCann, Mikito Koshino.
+\textit{The electronic properties of bilayer graphene}.
+arXiv:1205.6953, 2012.
+
+\bibitem{schonen}
+Christian Schonenberger.
+\textit{Bandstructure of Graphene and Carbon Nanotubes: An Exercise in Condensed Matter Physics}.
+2000.
 
 \end{thebibliography}
 
