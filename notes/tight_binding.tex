@@ -259,10 +259,10 @@ $$\bra{\phi_{B}}\Delta U_{B}\ket{\psi_{k}} = c_{A}\bra{\phi_{B}}\Delta U_{B}\ket
 
 Now, we'll simplify things by introducing some shorthand notation. Let
 $$ \alpha =  1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}}$$
-$$ \gamma_{0} = \bra{\psi_{A}}\ket{\psi_{B}} = \bra{\psi_{B}}\ket{\psi_{A}}$$
-$$ \gamma_{1} = \bra{\psi_{A}}\Delta U_{A}\ket{\psi_{B}} = \bra{\psi_{B}}\Delta U_{B}\ket{\psi_{B}}$$
+$$ \gamma_{0} = \bra{\phi_{A}}\ket{\phi_{B}} = \bra{\phi_{B}}\ket{\phi_{A}}$$
+$$ \gamma_{1} = \bra{\phi_{A}}\Delta U_{A}\ket{\phi_{B}} = \bra{\phi_{B}}\Delta U_{B}\ket{\phi_{B}}$$
 
-To remind ourselves, our equation for $E_{\vec{k}}$ is
+To remind ourselves, our equation for $E(\vec{k})$ is
 $$E(\vec{k}) = \frac{\bra{\phi_{A,B}}\Delta U_{A,B}\ket{\psi_{k}}}{\bra{\phi_{A,B}}\ket{\psi_{k}}}$$
 and with the values we've calculated, we obtain the following system of equations:
 $$E(\vec{k})(c_{A} + \alpha\gamma_{0}c_{B}) = \alpha\gamma_{1}c_{B}$$
@@ -280,8 +280,34 @@ c_{B}
 \end{bmatrix}
 = 0
 $$
+Taking the determinant gives us the characteristic equation
+$$E(\vec{k})^{2}(1 - |\alpha|^2\gamma_{0}^{2}) + 2|\alpha|^2\gamma_{0}\gamma_{1}E(\vec{k}) - |\alpha|^2\gamma_{1}^{2} = 0$$
+Now, if we make the assumption (as we've done in previous sections) that the orbital overlap is so small that they are practically orthogonal,
+we end up with
+$$\bra{\phi_{B}}\ket{\phi_{A}} = \bra{\phi_{1}}\ket{\phi_{B}} = \gamma_{0} = 0$$
+which allows us to obtain the following simple equation for the energy $E(\vec{k})$:
+$$ E(\vec{k}) = \pm |\alpha|\gamma_{1}$$
+To obtain an explicit expression for $E(\vec{k})$, we begin by calculating the magnitude of $\alpha$. First, we note the following form for $\alpha$:
+$$\alpha = 1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}}$$
+$$= 1 + exp\left (-i\left (k_{x}\frac{a}{\sqrt{2}} + k_{y}\frac{3a}{\sqrt{2}}\right )\right ) + exp\left (i\left (k_{x}\frac{a}{\sqrt{2}} - k_{y}\frac{3a}{\sqrt{2}}\right )\right )$$
+$$ = 1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left (exp\left (-ik_{x}\frac{a}{\sqrt{2}}\right ) + exp\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )$$
+$$ = 1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )$$
+Using this form, we now calculate the magnitude of $\alpha$.
+$$|\alpha| = \sqrt{\alpha^{*}\alpha}$$
+$$= \sqrt{\left [1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )\right ]
+          \left [1 + exp\left (+ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )\right ]}$$
+$$ = \sqrt{1 + 4cos\left ( k_{y}\frac{3a}{\sqrt{2}}\right )cos\left ( k_{y}\frac{a}{\sqrt{2}}\right ) + 4cos^{2}\left (k_{x}\frac{a}{\sqrt{2}}\right ) }$$
+Finally, we obtain the final equation for the dispersion relation of monolayer graphene.
+$$ E(\vec{k}) = \pm \gamma_{1}\sqrt{1 + 4cos\left ( k_{y}\frac{3a}{\sqrt{2}}\right )cos\left ( k_{y}\frac{a}{\sqrt{2}}\right ) + 4cos^{2}\left (k_{x}\frac{a}{\sqrt{2}}\right ) }$$
+The dispersion relation is plotted in figure 9.
+\section{Bilayer Graphene}
+Finally, we take a look at the bilayer case.
 
-
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.42]{monolayer_disp_small}
+\caption{Dispersion relation $E(\vec{k})$ plotted for monolayer graphene. }
+\end{figure}
 \begin{thebibliography}{9}
 \bibitem{oxford}
 Steven H. Simon.
