@@ -300,14 +300,40 @@ $$ = \sqrt{1 + 4cos\left ( k_{y}\frac{3a}{\sqrt{2}}\right )cos\left ( k_{y}\frac
 Finally, we obtain the final equation for the dispersion relation of monolayer graphene.
 $$ E(\vec{k}) = \pm \gamma_{1}\sqrt{1 + 4cos\left ( k_{y}\frac{3a}{\sqrt{2}}\right )cos\left ( k_{y}\frac{a}{\sqrt{2}}\right ) + 4cos^{2}\left (k_{x}\frac{a}{\sqrt{2}}\right ) }$$
 The dispersion relation is plotted in figure 9.
-\section{Bilayer Graphene}
-Finally, we take a look at the bilayer case.
-
 \begin{figure}[h]
 \centering
 \includegraphics[scale=.42]{monolayer_disp_small}
 \caption{Dispersion relation $E(\vec{k})$ plotted for monolayer graphene. }
 \end{figure}
+\section{Bilayer Graphene}
+Finally, we take a look at the bilayer case. When considering two layers of graphene, our unit cell grows by two sites. That is, we not only consider the
+two carbon atoms in the unit cell of the bottom lattice as well as two carbon atoms in the unit cell of the top lattice. Within the bilayer unit cell,
+we have four sites: $A_{1}$ and $B_{1}$ on the bottom layer, and $A_{2}$ and $B_{2}$ on the top layer. The layers are stacked such that $A_{2}$ lies
+directly on top of $B_{1}$, but $A_{1}$ and $B_{2}$ are not aligned. For this reason, $A_{2}$ and $B_{1}$ are referred to as "dimer" sites while
+$A_{1}$ and $B_{2}$ are non-dimer sites. The configuration of the unit cell is shown in figure 10. \par
+We begin by formalizing the techniques of the last section and observing that the energy $E(\vec{k})$ satisfies the following relation:
+$$H\psi_{k}=E(\vec{k})S\psi_{k}$$
+where $\psi_{k}$ is the electronic wavefunction, $H$ is the \emph{transfer integral matrix} and $S$ is the \emph{overlap integral matrix}. The
+matrices are defined by
+$$H_{ij} = \bra{\Phi_{i}}\mathcal{H}\ket{\Phi_{j}}$$
+and
+$$S_{ij} = \bra{\Phi_{i}}\ket{\Phi_{j}}$$
+where $\mathcal{H}$ is the Hamiltonian and $\Phi_{i}$ is the Bloch state corresponding to orbital $i$, where $i$ takes on the values $A_{1}$, $B_{1}$, $A_{2}$, and $B_{2}$. Now, the Hamiltonian $\mathcal{H}$
+is given by
+$$ \mathcal{H} = K + \sum_{n}V_{A_{1}} + V_{B_{1}} + V_{A_{2}} + V_{B_{2}} $$
+where
+$$V_{i} = V(\vec{r} - \vec{r}_{i} - \vec{R}_n)$$
+which is analogous to what we see in the monolayer case. First, let's consider the overlap integral matrix $S$. The on-diagonal elements are
+given by
+$$S_{mm} = \bra{\Phi_{m}}\ket{\Phi_{m}}$$
+$$ = \frac{1}{N} \sum_{n'=1}^{N} e^{-i\vec{k}\cdot\vec{R}_{n'}} \sum_{n=1}^{N} e^{i\vec{k}\cdot\vec{R}_{n}} \bra{\phi_{m}(\vec{r} - \vec{R}_{n'})}\ket{\phi_{m}(\vec{r} - \vec{R}_{n})} $$
+
+Now, let's consider the transfer integral matrix $H$. The on-diagonal elements are given by
+$$H_{ii} = \bra{\Phi_{i}}\mathcal{H}\ket{\Phi_{i}}$$
+Let $i$ be $A_{1}$. Then we have,
+$$H_{A_{1}A_{1}} = \bra{\Phi_{A_{1}}}\mathcal{H}\ket{\Phi_{A_{1}}}$$
+$$ = \bra{\Phi_{A_{1}}}K + \sum_{n}V_{A_{1}} + V_{B_{1}} + V_{A_{2}} + V_{B_{2}}\ket{\Phi_{A_{1}}}$$
+
 \begin{thebibliography}{9}
 \bibitem{oxford}
 Steven H. Simon.
