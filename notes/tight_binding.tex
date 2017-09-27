@@ -291,11 +291,11 @@ To obtain an explicit expression for $E(\vec{k})$, we begin by calculating the m
 $$\alpha = 1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}}$$
 $$= 1 + exp\left (-i\left (k_{x}\frac{a}{\sqrt{2}} + k_{y}\frac{3a}{\sqrt{2}}\right )\right ) + exp\left (i\left (k_{x}\frac{a}{\sqrt{2}} - k_{y}\frac{3a}{\sqrt{2}}\right )\right )$$
 $$ = 1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left (exp\left (-ik_{x}\frac{a}{\sqrt{2}}\right ) + exp\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )$$
-$$ = 1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )$$
+$$ = 1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (k_{x}\frac{a}{\sqrt{2}}\right )\right )$$
 Using this form, we now calculate the magnitude of $\alpha$.
 $$|\alpha| = \sqrt{\alpha^{*}\alpha}$$
-$$= \sqrt{\left [1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )\right ]
-          \left [1 + exp\left (+ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (ik_{x}\frac{a}{\sqrt{2}}\right )\right )\right ]}$$
+$$= \sqrt{\left [1 + exp\left (-ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (k_{x}\frac{a}{\sqrt{2}}\right )\right )\right ]
+          \left [1 + exp\left (+ik_{y}\frac{3a}{\sqrt{2}}\right )\left ( 2cos\left (k_{x}\frac{a}{\sqrt{2}}\right )\right )\right ]}$$
 $$ = \sqrt{1 + 4cos\left ( k_{y}\frac{3a}{\sqrt{2}}\right )cos\left ( k_{y}\frac{a}{\sqrt{2}}\right ) + 4cos^{2}\left (k_{x}\frac{a}{\sqrt{2}}\right ) }$$
 Finally, we obtain the final equation for the dispersion relation of monolayer graphene.
 $$ E(\vec{k}) = \pm \gamma_{1}\sqrt{1 + 4cos\left ( k_{y}\frac{3a}{\sqrt{2}}\right )cos\left ( k_{y}\frac{a}{\sqrt{2}}\right ) + 4cos^{2}\left (k_{x}\frac{a}{\sqrt{2}}\right ) }$$
@@ -327,12 +327,61 @@ which is analogous to what we see in the monolayer case. First, let's consider t
 given by
 $$S_{mm} = \bra{\Phi_{m}}\ket{\Phi_{m}}$$
 $$ = \frac{1}{N} \sum_{n'=1}^{N} e^{-i\vec{k}\cdot\vec{R}_{n'}} \sum_{n=1}^{N} e^{i\vec{k}\cdot\vec{R}_{n}} \bra{\phi_{m}(\vec{r} - \vec{R}_{n'})}\ket{\phi_{m}(\vec{r} - \vec{R}_{n})} $$
+As before, we will only consider nearest neighbor contributions. Therefore, there is no overlap between a particular orbital and its corresponding orbital
+in another unit cell. We only consider the case where $R_{n'} = R_{n}$. This simplifies to
+$$S_{mm} = \frac{1}{N}\sum_{n}^{N}\bra{\phi_{m}(\vec{r} - \vec{R}_{n})}\ket{\phi_{m}(\vec{r} - \vec{R}_{n})} = 1$$
+Now, the off-diagonal elements are given by
+$$ S_{m'm} = \frac{1}{N} \sum_{n'=1}^{N} e^{-i\vec{k}\cdot\vec{R}_{n'}} \sum_{n=1}^{N} e^{i\vec{k}\cdot\vec{R}_{n'}} \bra{\phi_{m'}(\vec{r} - \vec{R}_{n'})}\ket{\phi_{m}(\vec{r} - \vec{R}_{n})} $$
+As with the monolayer case, we will consider nearest neighbor interations on the same layer, but we must also consider the interactions between the dimer sites $B_{1}$ and $A_{2}$. Since the nearest-neighbor
+interactions are almost localized to the layer, the $S$ matrix will almost look block diagonal with two monolayer submatrices. However, we will also factor in the interlayer coupling. The nearest neighbor
+interactions elements are given by:
+$$ S_{A_{1}B_{1}} = S_{A_{2}B_{2}}= \alpha\gamma_{0}$$
+$$ S_{B_{1}A_{1}} = S_{B_{2}A_{2}} = \alpha^{*}\gamma_{0} $$
+which is directly analogous to the monolayer case. And for the dimer site coupling, we simply introduce the element $\gamma_{d}$.
+Therefore, our $S$ matrix is given by
+$$ S =
+\begin{bmatrix}
+1 & \alpha\gamma_{0} & 0 & 0\\
+\alpha^{*}\gamma_{0} & 1 & \gamma_{d} & 0\\
+0 & \gamma_{d} & 1 & \alpha\gamma_{0} \\
+0 & 0 & \alpha^{*}\gamma_{0} & 1
+\end{bmatrix}
+$$
 
-Now, let's consider the transfer integral matrix $H$. The on-diagonal elements are given by
-$$H_{ii} = \bra{\Phi_{i}}\mathcal{H}\ket{\Phi_{i}}$$
-Let $i$ be $A_{1}$. Then we have,
-$$H_{A_{1}A_{1}} = \bra{\Phi_{A_{1}}}\mathcal{H}\ket{\Phi_{A_{1}}}$$
-$$ = \bra{\Phi_{A_{1}}}K + \sum_{n}V_{A_{1}} + V_{B_{1}} + V_{A_{2}} + V_{B_{2}}\ket{\Phi_{A_{1}}}$$
+Now, let's consider the transfer integral matrix $H$. As with the overlap integral matrix, we can see that the monolayer subspace will be
+the same as before. That is,
+$$H_{A_{1,2}B_{1,2}} = -\alpha\gamma_{1}$$
+$$H_{B_{1,2}A_{1,2}} = -\alpha^{*}\gamma_{1}$$
+and
+$$H_{A_{1,2}A_{1,2}} = E_{A_{1,2}}$$
+$$H_{B_{1,2}A_{1,2}} = E_{B_{1,2}}$$
+
+For the interlayer subspace, we introduce a number of parameters. First, we introduce $\beta_{d}$, an element to describe interlayer
+coupling between dimer sites, which is strictly vertical.
+$$ H_{A_{2}B_{1}} = H_{B_{1}A_{2}} = \beta_{d} $$
+
+Then we introduce $\beta_{nd}$ and $\beta_{nn}$ for interactions between non-dimer/dimer pairs and non-dimer/non-dimer pairs respectively.
+We must also consider the fact that these interlayer interactions are not strictly vertical and involve some component of in-plane
+hopping. Therefore,
+$$ H_{A_{2}B_{1}} = H_{B_{1}A_{2}} = \beta_{d} $$
+$$ H_{A_{1}A_{2}} = H_{B_{1}B_{2}} = \alpha\beta_{nd} $$
+$$ H_{A_{1}B_{2}} = -\alpha^{*}\beta_{nn} $$
+$$ H_{A_{2}A_{1}} = H_{B_{2}B_{1}} = \alpha^{*}\beta_{nd} $$
+$$ H_{B_{2}A_{1}} = -\alpha\beta_{nn} $$
+
+where sign conventions are chosen for convenience. Putting this all together gives us:
+
+$$ H =
+\begin{bmatrix}
+E_{A_{1}} & -\alpha\gamma_{1} & \alpha\beta_{nd} & -\alpha^{*}\beta_{nn}\\
+-\alpha^{*}\gamma_{1} & E_{B_{1}} & \beta_{d} & \alpha\beta_{nd}\\
+\alpha^{*}\beta_{nd} & \beta_{d} & E_{A_{2}} & -\alpha\gamma_{1} \\
+-\alpha\beta_{nn} & \alpha^{*}\beta_{nd} & -\alpha^{*}\gamma_{1} & E_{B_{2}}
+\end{bmatrix}
+$$
+
+Now, we need to solve the characteristic equation for $E(\vec{k})$.
+$$det(H - E(\vec{k})S) = 0$$
 
 \begin{thebibliography}{9}
 \bibitem{oxford}
