@@ -413,7 +413,56 @@ Now, in the reciprocal space, a point $\vec{G}$ on the reciprocal lattice may be
 \begin{equation}
 e^{i\vec{G}\cdot\vec{R}} = 1
 \end{equation}
-where $\vec{G}$ can be similarly written as a function of primitive lattice vectors $\vec{b}_{1}$
+where $\vec{G}$ can be similarly written as a function of primitive lattice vectors $\vec{b}_{i}$.
+\begin{equation}
+\vec{G} = m_{1}\vec{b}_{1} + m_{2}\vec{b}_{2} + m_{3}\vec{b}_{3}
+\end{equation}
+Since our relationship is well defined such that (where $\eta$ is some integer)
+\begin{equation}
+\vec{G}\cdot\vec{R} = \sum_{i}m_{i}n_{i}\vec{a}_{i}\cdot\vec{b}_{i} = 2\eta\pi
+\end{equation}
+then, if $m_{i}$ and $n_{i}$ are integers, then $\vec{a}_{i}\cdot\vec{b}_{i} = 2\pi$. In general, the primitive
+reciprocal lattice vectors are defined such that
+\begin{equation}
+\vec{a}_{i}\cdot\vec{b}_{j} = \delta_{ij}
+\end{equation}
+It is also useful to consider the reciprocal lattice as a Fourier transform on the original lattice.
+Generally speaking, a Fourier transform takes a function $f(x)$ and transforms it into a function of
+the transform variable $\eta$. The form of the transformed function $\hat{f}(\eta)$ is
+\begin{equation}
+\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x)e^{-2\pi ix\xi}dx
+\end{equation}
+We begin by considering a one-dimensional lattice, where the distance between lattice points is
+given by $a$. Then, the lattice points are simply $R_{n} = an$. We could describe the lattice as a
+density of lattice points:
+\begin{equation}
+\rho(r) = \sum_{n}\delta(r - an)
+\end{equation}
+In words, the collection of lattice points is described by a sum of delta functions that spike when the
+position $r$ is equal to $an$, some integer multiple of $a$. Let's say we want to Fourier transform this
+lattice density to obtain an expression in terms of $\vec{k}$, the wavevector. Then,
+
+\begin{equation}
+\hat{\rho}(k) = \int \rho(r)e^{-2\pi ikr}dr = \int \rho(r)e^{ikr}dr
+\end{equation}
+where in the last step we use $e^{-i2\pi} = 1$. This gives us
+\begin{equation}
+\hat{\rho}(k) = \sum_{n}\int \delta(r - an)e^{ikr}dr = \sum_{n}e^{ikan}
+\end{equation}
+In the last equation, a term in the sum is 1 if $k = \frac{2m\pi}{a}$, but all other k
+values cancel out as the function is oscillatory. WHY???
+
+\subsection{Brillouin Zones}
+\begin{itemize}
+\item A system which is periodic in real space with periodicity $a$ will be periodic in reciprocal
+space with periodicity $\frac{2\pi}{a}$
+\end{itemize}
+A Brillouin zone is defined as a unit cell of the reciprocal lattice. Because the wavevector is
+periodic with regard to shifts by the reciprocal lattice vector $\vec{G}$, $k + \vec{G}$, the reciprocal unit cell
+contains all physically unique values for $k$ and each physically unique value appears only once within the unit cell.
+
+
+
 
 \begin{thebibliography}{9}
 \bibitem{oxford}
