@@ -394,6 +394,27 @@ $$
 Now, we need to solve the characteristic equation for $E(\vec{k})$.
 $$det(H - E(\vec{k})S) = 0$$
 
+\section{Appendix}
+\subsection{Reciprocal Lattice}
+We may define a lattice point over some three-dimensional lattice as
+
+\begin{equation}
+\vec{R} = n_{1}\vec{a}_{1} + n_{2}\vec{a}_{2} + n_{3}\vec{a}_{3}
+\end{equation}
+
+where $\vec{a}_{i}$ are primitive lattice vectors. For example, in the case of
+graphene, all lattice points can be constructed from the relation
+
+\begin{equation}
+\vec{R} = n_{1}\vec{a}_{1} + n_{2}\vec{a}_2 = n_{1}(\frac{a}{\sqrt{2}}, \frac{3a}{\sqrt{2}}) + n_{2}(\frac{a}{\sqrt{2}}, -\frac{3a}{\sqrt{2}})
+\end{equation}
+among others depending on the choice of primitive lattice vectors, which is not unique.
+Now, in the reciprocal space, a point $\vec{G}$ on the reciprocal lattice may be defined to obey
+\begin{equation}
+e^{i\vec{G}\cdot\vec{R}} = 1
+\end{equation}
+where $\vec{G}$ can be similarly written as a function of primitive lattice vectors $\vec{b}_{1}$
+
 \begin{thebibliography}{9}
 \bibitem{oxford}
 Steven H. Simon.
