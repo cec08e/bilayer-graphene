@@ -459,7 +459,19 @@ space with periodicity $\frac{2\pi}{a}$
 \end{itemize}
 A Brillouin zone is defined as a unit cell of the reciprocal lattice. Because the wavevector is
 periodic with regard to shifts by the reciprocal lattice vector $\vec{G}$, $k + \vec{G}$, the reciprocal unit cell
-contains all physically unique values for $k$ and each physically unique value appears only once within the unit cell.
+contains all physically unique values for $k$ and each physically unique value appears only once within the unit cell. \par
+The process for constructing the first Brillouin zone is as follows:
+\begin{itemize}
+\item Draw a reciprocal lattice vector from from $\vec{k} = 0$ to all neigboring reciprocal lattice points.
+\item Draw a perpendicular bisector on the reciprocal lattice vectors. These bisectors form the Brillouin zone boundary.
+\item All $\vec{k}$ points that can be reached from $\vec{k} = 0$ without crossing a Brillouin zone boundary are in the
+ first Brillouin zone.
+ \item If the previous steps are continued, all points that can be reached without crossing two boundaries are in the
+  second Brillouin zone, and so forth.
+\end{itemize}
+The first Brillouin zone is continuous, but higher Brillouin zones are typically constructed with multiple pieces. Each Brillouin zone
+covers the same area or volume and there are as many $\vec{k}$-states within a given Brillouin zone as there are unit cells in
+the reciprocal lattice. 
 
 
 
