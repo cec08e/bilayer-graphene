@@ -40,7 +40,7 @@ def bilayer_determinant():
                  [0, E, 0, 0],
                  [0, 0, E, 0],
                  [0, 0, 0, E]])
-    ka_space = np.linspace(-3*np.pi/2.0, 3*np.pi/2.0, 30)
+    ka_space = np.linspace(-2*np.pi, 2*np.pi, 500)
 
     E_vals_list = []
     for kxa in ka_space:
@@ -66,7 +66,7 @@ def bilayer_determinant():
         #print "Factored determinant: ", sp.factor(M_d)
         #print "Simplified determinant: " , sp.simplify(M_d)
         # Make a space of ka values
-        M_d = 1.44855*np.power(a,3) + 0.0209612*a*a_s + 99.3212*np.power(a,2)*np.power(a_s,2) + 1.44855*np.power(a_s,3) - 0.336224*np.power(a,3)*E + 0.674218*a*as*E - 0.336224*np.power(a_s,3)*E - 0.145161*(En**2) - 20.1548*a*as*(En**2) + En**4
+        M_d = 1.44855*np.power(a,3) + 0.0209612*a*a_s + 99.3212*np.power(a,2)*np.power(a_s,2) + 1.44855*np.power(a_s,3) - 0.336224*np.power(a,3)*E + 0.674218*a*a_s*E - 0.336224*np.power(a_s,3)*E - 0.145161*np.power(E,2) - 20.1548*a*a_s*(np.power(E,2)) + np.power(E,4)
         sols = sp.solve(M_d,E)
         print sols
         E_vals_list.append(sols)
@@ -75,11 +75,14 @@ def bilayer_determinant():
         #print sp.solve((E**7 - 29.9956*E**5*a*a_s - 0.145161*E**5 - 0.07584*E**4*a**3 + 0.5779008*E**4*a*a_s - 0.07584*E**4*a_s**3 + 0.381*E**3*a**3 + 299.23668544*E**3*a**2*a_s**2 + 1.4509712916*E**3*a*a_s + 0.381*E**3*a_s**3 + 0.757307904*E**2*a**4*a_s - 5.77068622848*E**2*a**2*a_s**2 + 0.757307904*E**2*a*a_s**4 - 3.8045136*E*a**4*a_s - 992.816576856064*E*a**3*a_s**3 - 0.014495196816*E*a**2*a_s**2 - 3.8045136*E*a*a_s**4), E)
     print "Before: ", E_vals_list
     #E_vals_list = np.array(E_vals_list)
-    #print "After: ", E_vals_list
-    #plt.plot(ka_space, [E_vals_list[i][0] for i in range(len(E_vals_list))])
-    #plt.plot([kxa]*len(E_vals_list), [E_vals_list[i][1] for i in range(len(E_vals_list))])
-    #plt.plot([kxa]*len(E_vals_list), [E_vals_list[i][2] for i in range(len(E_vals_list))])
-    #plt.plot([kxa]*len(E_vals_list), [E_vals_list[i][3] for i in range(len(E_vals_list))])
+    print "After: ", E_vals_list
+    #print [sp.re(E_vals_list[i][0]) for i in range(len(E_vals_list))]
+    plt.plot(ka_space, [sp.re(E_vals_list[i][0]) for i in range(len(E_vals_list))])
+    plt.plot(ka_space, [sp.re(E_vals_list[i][1]) for i in range(len(E_vals_list))])
+    plt.plot(ka_space, [sp.re(E_vals_list[i][2]) for i in range(len(E_vals_list))])
+    plt.plot(ka_space, [sp.re(E_vals_list[i][3]) for i in range(len(E_vals_list))])
+    plt.ylabel("$E(eV)$", fontsize = 18)
+    plt.xlabel("$k_{x}a$", fontsize = 18)
     plt.show()
 
 if __name__ == "__main__":
