@@ -54,19 +54,19 @@ def bilayer_determinant():
         #               [a_s*b_nd, b_d , EA2, -a*g_1],
         #               [-a*b_nn, a_s*b_nd, -a_s*g_1, EB2]])
         #M = H - ES
-        H_simple = sp.Matrix([[0, -a*(3.16), a*(.14), -a_s*(.38)],
-                       [-a_s*(3.16), 0, .381 ,a*(.14)],
-                       [a_s*(.14), .381 , 0, -a*(3.16)],
-                       [-a*(.38), a_s*(.14), -a_s*(3.16), 0]])
-        M = H_simple - ES_simple
-        M_d = M.det()
+        #H_simple = sp.Matrix([[0, -a*(3.16), a*(.14), -a_s*(.38)],
+        #               [-a_s*(3.16), 0, .381 ,a*(.14)],
+        #               [a_s*(.14), .381 , 0, -a*(3.16)],
+        #               [-a*(.38), a_s*(.14), -a_s*(3.16), 0]])
+        #M = H_simple - ES_simple
+        #M_d = M.det()
         #print "M: ", M
         #print "Determinant: ", M_d
         #print "******"
         #print "Factored determinant: ", sp.factor(M_d)
         #print "Simplified determinant: " , sp.simplify(M_d)
         # Make a space of ka values
-
+        M_d = 1.44855*np.power(a,3) + 0.0209612*a*a_s + 99.3212*np.power(a,2)*np.power(a_s,2) + 1.44855*np.power(a_s,3) - 0.336224*np.power(a,3)*E + 0.674218*a*as*E - 0.336224*np.power(a_s,3)*E - 0.145161*(En**2) - 20.1548*a*as*(En**2) + En**4
         sols = sp.solve(M_d,E)
         print sols
         E_vals_list.append(sols)
@@ -76,7 +76,7 @@ def bilayer_determinant():
     print "Before: ", E_vals_list
     #E_vals_list = np.array(E_vals_list)
     #print "After: ", E_vals_list
-    plt.plot(ka_space, [E_vals_list[i][0] for i in range(len(E_vals_list))])
+    #plt.plot(ka_space, [E_vals_list[i][0] for i in range(len(E_vals_list))])
     #plt.plot([kxa]*len(E_vals_list), [E_vals_list[i][1] for i in range(len(E_vals_list))])
     #plt.plot([kxa]*len(E_vals_list), [E_vals_list[i][2] for i in range(len(E_vals_list))])
     #plt.plot([kxa]*len(E_vals_list), [E_vals_list[i][3] for i in range(len(E_vals_list))])
