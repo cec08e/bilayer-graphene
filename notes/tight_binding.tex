@@ -427,6 +427,38 @@ plot for the band structure of bilayer graphene presented in Figure 12.
 \caption{$E_{k}$ is plotted along the $k_{x}a$ axis. Plot is centered on the $K_{+}$ Dirac point at $k_{x} = \frac{4\pi}{3a}$. }
 \end{figure}
 
+\subsection{Low Energy Limit}
+We can see from the energy dispersion plot in figure 12 that one conduction band and one valence band actually touch at the Dirac points $K_{+}$ and $K_{-}$.
+To analyze the behavior around these points, we will look at the energy dispersion in the small region around the $K_{+}$ point. The $K_{+}$ point is located at
+$(k_{x} = \frac{4\pi}{3a}, k_{y} = 0)$. TO DO: Insert figure for $K_{+}$ position derivation.
+The $\vec{k}$-dependent element of our Hamiltonian is $\alpha$ (as well as, of course, $\alpha^{*}$). Let us first define
+\begin{equation}
+\vec{k}' = \vec{k} - K_{+}
+\end{equation}
+Then we have
+\begin{equation}
+\vec{k} = \vec{k}' + K_{+} = (k_{x}' + \frac{4\pi}{3a}, k_{y}')
+\end{equation}
+Therefore,
+$$
+\alpha = 1 + e^{i\vec{k}\cdot-\vec{a}_{1}} + e^{i\vec{k}\cdot\vec{a}_{2}}
+$$
+\begin{equation}
+ = 1 + exp\left (-i\left (\frac{ak_{x}}{2} + \frac{\sqrt{3}ak_{y}}{2}\right )\right ) + exp\left (i\left (\frac{ak_{x}}{2} - \frac{\sqrt{3}ak_{y}}{2}\right )\right )
+\end{equation}
+\begin{equation}
+ = 1 + exp\left (-i\left (\frac{ak_{x}'}{2} + \frac{2\pi}{3} + \frac{\sqrt{3}ak_{y}'}{2}\right )\right ) + exp\left (i\left (\frac{ak_{x}'}{2} + \frac{2\pi}{3} - \frac{\sqrt{3}ak_{y}'}{2}\right )\right )
+\end{equation}
+Now, we expand $\alpha(k_{x}', k_{y}')$ around the point $(k_{x}', k_{y}') = (0,0)$.
+\begin{equation}
+\alpha(k_{x}, k_{y}) = \alpha(0,0) + \alpha_{k_{x}}(0,0)k_{x} + \alpha_{k_{y}}(0,0)k_{y} + \mathcal{O}(k^{2})
+\end{equation}
+\begin{equation}
+= -\frac{\sqrt{3}a}{2}(k_{x}' - ik_{y}')
+\end{equation}
+
+
+% APPENDIX %
 \section{Appendix}
 \subsection{Reciprocal Lattice}
 We may define a lattice point over some three-dimensional lattice as
