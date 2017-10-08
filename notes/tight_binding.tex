@@ -454,9 +454,76 @@ Now, we expand $\alpha(k_{x}', k_{y}')$ around the point $(k_{x}', k_{y}') = (0,
 \alpha(k_{x}, k_{y}) = \alpha(0,0) + \alpha_{k_{x}}(0,0)k_{x} + \alpha_{k_{y}}(0,0)k_{y} + \mathcal{O}(k^{2})
 \end{equation}
 \begin{equation}
-= -\frac{\sqrt{3}a}{2}(k_{x}' - ik_{y}')
+\alpha = -\frac{\sqrt{3}a}{2}(k_{x}' - ik_{y}')
+\end{equation}
+and similarly, we obtain
+\begin{equation}
+\alpha^{*} = -\frac{\sqrt{3}a}{2}(k_{x}' + ik_{y}')
+\end{equation}
+If we define $\kappa = k_{x}' - ik_{y}'$, then we can write
+\begin{equation}
+\alpha = -\frac{\sqrt{3}a}{2}\kappa
+\end{equation}
+and similarly, we obtain
+\begin{equation}
+\alpha^{*} = -\frac{\sqrt{3}a}{2}\kappa^{*}
+\end{equation}
+To remind ourselves, the Hamiltonian is given by
+\begin{equation}
+H =
+\begin{bmatrix}
+E_{A_{1}} & -\alpha\gamma_{1} & \alpha\beta_{nd} & -\alpha^{*}\beta_{nn}\\
+-\alpha^{*}\gamma_{1} & E_{B_{1}} & \beta_{d} & \alpha\beta_{nd}\\
+\alpha^{*}\beta_{nd} & \beta_{d} & E_{A_{2}} & -\alpha\gamma_{1} \\
+-\alpha\beta_{nn} & \alpha^{*}\beta_{nd} & -\alpha^{*}\gamma_{1} & E_{B_{2}}
+\end{bmatrix}
 \end{equation}
 
+The intralayer subspaces characterized by $\{A_{1}, B_{1}\}$ and $\{A_{2}, B_{2}\}$ simply take on the form
+\begin{equation}
+H_{mono} = \begin{bmatrix}
+E_{A_{1,2}} & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} \\
+\frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1} & E_{B_{1,2}}
+\end{bmatrix}
+\end{equation}
+
+which also characterizes the effect of expanding around the dirac points in the monolayer case. The full Hamiltonian is given by
+
+\begin{equation}
+H =
+\begin{bmatrix}
+E_{A_{1}} & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} & -\frac{\sqrt{3}a}{2}\kappa\beta_{nd} & \frac{\sqrt{3}a}{2}\kappa^{*}\beta_{nn}\\
+\frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1} & E_{B_{1}} & \beta_{d} & -\frac{\sqrt{3}a}{2}\kappa\beta_{nd}\\
+-\frac{\sqrt{3}a}{2}\kappa^{*}\beta_{nd} & \beta_{d} & E_{A_{2}} & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} \\
+\frac{\sqrt{3}a}{2}\kappa\beta_{nn} & -\frac{\sqrt{3}a}{2}\kappa^{*}\beta_{nd} & \frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1}& E_{B_{2}}
+\end{bmatrix}
+\end{equation}
+
+To obtain an analytic result for the energy eigenvalues, we will allow $E_{A_{1}{2}} = E_{B_{1,2}} = 0$ and we will also
+allow $\beta_{nd}$ to vanish as the dimer/non-dimer coupling is the weakest of the coupling terms. This gives us
+
+\begin{equation}
+H =
+\begin{bmatrix}
+0 & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} & 0 & \frac{\sqrt{3}a}{2}\kappa^{*}\beta_{nn}\\
+\frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1} & 0 & \beta_{d} & 0 \\
+0 & \beta_{d} & 0  & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} \\
+\frac{\sqrt{3}a}{2}\kappa\beta_{nn} & 0 & \frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1}& 0
+\end{bmatrix}
+\end{equation}
+
+for which solving the characteristic eigenvalue equation yields the solutions
+
+\begin{equation}
+E = \pm \sqrt{\frac{\beta_d^{2}}{2} + a^{2}|\kappa|^{2}\left (\frac{3\gamma_{1}^{2}}{4} + \frac{3\beta_{nn}^{2}}{8}\right ) \pm \sqrt{\mathcal{O}(|\kappa|^{4})}}
+\end{equation}
+
+Furthermore, if we allow the $\beta_{nn}$ terms to vanish, the equation for the energy simply becomes
+\begin{equation}
+E = \pm\frac{1}{2}\left ( \beta_{d} \pm \sqrt{\beta_{d}^{2} + 3a^{2}|\kappa|^{2}\gamma_{1}^{2}} \right)
+\end{equation}
+In either case, the notable observation is that the dispersion relation is approximately linear with respect to $\kappa$ in the small regions around the Dirac points. That is, around the Dirac
+points, the energy dispersion is approximately linear with the deviation in momentum space from the Dirac point. 
 
 % APPENDIX %
 \section{Appendix}
