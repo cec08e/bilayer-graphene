@@ -28,6 +28,42 @@ def calc_a(kxa):
     # when ky = 0, a = a*
     return 1 + np.exp((0+1j)*kxa/2.0) + np.exp((0-1j)*kxa/2.0)
 
+def calc_2da(kxa, kya, cc = False):
+    if cc:
+        return 1 + np.exp((0-1j)*((kxa/2.0) + np.sqrt(3)*kya/2.0)) + np.exp((0+1j)*((kxa/2.0) - np.sqrt(3)*kya/2.0) )
+    else:
+        return 1 + np.exp((0+1j)*((kxa/2.0) + np.sqrt(3)*kya/2.0)) + np.exp((0-1j)*((kxa/2.0) - np.sqrt(3)*kya/2.0) )
+
+def bilayer_3d():
+    E = sp.symbols("E")
+    fig = plt.figure()
+    ax = fig.gca( projection='3d')
+    kxa = np.linspace(-2*np.pi, 2*np.pi, 10)
+    kya = np.linspace(-2*np.pi, 2*np.pi, 10)
+    Kx, Ky = np.meshgrid(kxa,kya)
+    #print "Kx, Ky: ", Kx, Ky
+    E_vals_list = []
+    for kx in kxa:
+        for ky in kya:
+            #print "kx, ky: ", kx, ky
+            x_sols = []
+            a = calc_2da(kx, ky)
+            a_s = calc_2da(kx, ky, True)
+            M_d = 1.44855*np.power(a,3) + 0.0209612*a*a_s + 99.3212*np.power(a,2)*np.power(a_s,2) + 1.44855*np.power(a_s,3) - 0.336224*np.power(a,3)*E + 0.674218*a*a_s*E - 0.336224*np.power(a_s,3)*E - 0.145161*np.power(E,2) - 20.1548*a*a_s*(np.power(E,2)) + np.power(E,4)
+            #print "M_d:", M_d
+            sols = sp.solve(M_d, E, rational=False)
+            print sols
+            x_sols.append(sols)
+        E_vals_list.append(x_sols)
+    print E_vals_list
+    ax.plot_surface(Kx, Ky, [[sp.re(E_vals_list[i][j][0]) for j in range(len(E_vals_list[i]))] for i in range(len(E_vals_list))] )
+    ax.plot_surface(Kx, Ky, [[sp.re(E_vals_list[i][j][1]) for j in range(len(E_vals_list[i]))] for i in range(len(E_vals_list))])
+    ax.plot_surface(Kx, Ky, [[sp.re(E_vals_list[i][j][2]) for j in range(len(E_vals_list[i]))] for i in range(len(E_vals_list))])
+    ax.plot_surface(Kx, Ky,  [[sp.re(E_vals_list[i][j][3]) for j in range(len(E_vals_list[i]))] for i in range(len(E_vals_list))])
+    ax.set_zlabel("$E(eV)$", fontsize = 18)
+    ax.set_xlabel("$k_{x}a$", fontsize = 18)
+    plt.show()
+
 def bilayer_determinant():
     g_0, g_d, g_1 = sp.symbols("g_0 g_d g_1")
     E, EA1, EA2, EB1, EB2 = sp.symbols("E EA1 EA2 EB1 EB2")
@@ -88,4 +124,6 @@ def bilayer_determinant():
 if __name__ == "__main__":
     #plot_monolayer_disp()
     #plt.show()
-    bilayer_determinant()
+    #bilayer_determinant()
+    bilayer_3d()
+    plt.show()
