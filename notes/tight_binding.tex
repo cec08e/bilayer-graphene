@@ -537,6 +537,37 @@ of size $2\beta_{d}$ between the higher energy conduction band and lower energy 
 
 % APPENDIX %
 \section{Appendix}
+\subsection{Nearest Neighbor Lattice Vectors}
+To represent our position within the lattice, we have chosen the conventional lattice vector
+\begin{equation}
+\vec{R} = n_{1}\vec{a}_{1} + n_{2}\vec{a}_{2}
+\end{equation}
+where $\vec{a}_{1}$ and $\vec{a}_2$ are the primitive lattice vectors given by
+$$\vec{a}_{1} = \left(\frac{a}{2}, \frac{\sqrt{3}a}{2}\right )$$
+$$\vec{a}_{2} = \left(\frac{a}{2}, -\frac{\sqrt{3}a}{2}\right )$$
+However, this choice is not unique and we could choose another system to represent our position within the lattice.
+For example, instead of expressing our position in terms of $\vec{a}_{1}$ and $\vec{a}_{2}$, we might choose instead
+to use the nearest neighbor distances $\vec{d}_{1}$, $\vec{d}_{2}$, $\vec{d}_{3}$ as diagrammed in Figure . Explicitly
+written, these vectors are
+$$ \vec{d}_{1} = \left(-\frac{a}{2}, \frac{a}{2\sqrt{3}}\right)$$
+$$ \vec{d}_{2} = \left(\frac{a}{2}, \frac{a}{2\sqrt{3}}\right)$$
+\begin{equation}
+\vec{d}_{3} = \left (0, \frac{-2a}{\sqrt{3}}\right)
+\end{equation}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.42]{nearest_neighbor1}
+\caption{The monolayer configuration with the nearest neighbor lattice vectors $\vec{d}_{1}$, $\vec{d}_{2}$, $\vec{d}_{3}$ added in red. }
+\end{figure}
+
+To convert from a primitive lattice vector representation to a nearest neighbor vector representation, we can make use of the following
+relationships.
+$$\vec{a}_{1} = \vec{d}_{2} - \vec{d}_{3}$$
+\begin{equation}
+\vec{a}_{2} = \vec{d}_{3} - \vec{d}_{1}
+\end{equation}
+
 \subsection{Reciprocal Lattice}
 We may define a lattice point over some three-dimensional lattice as
 
