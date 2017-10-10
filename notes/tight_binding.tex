@@ -626,7 +626,19 @@ where in the last step we use $e^{-i2\pi} = 1$. This gives us
 \hat{\rho}(k) = \sum_{n}\int \delta(r - an)e^{ikr}dr = \sum_{n}e^{ikan}
 \end{equation}
 In the last equation, a term in the sum is 1 if $k = \frac{2m\pi}{a}$, but all other k
-values cancel out as the function is oscillatory. WHY???
+value contributions cancel out when integrated over a test function, leaving only sharp peaks at the $k = \frac{2m\pi}{a}$ points.
+We can see this effect in Figure .
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.42]{reciprocal1}
+\caption{Individual plots of the first 4 terms in equation .   }
+\includegraphics[scale=.42]{reciprocal2}
+\caption{Plot of the sum of the first six terms in equation . Sharp peaks begin to form around the $ka = 2m\pi$ points. As more terms
+are added to the sum, the other contributions will not disappear, but will increase in frequency. When integrated over a test function, the contributions
+from these portions will vanish.}
+
+\end{figure}
 
 \subsection{Brillouin Zones}
 \begin{itemize}
