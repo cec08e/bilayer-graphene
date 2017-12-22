@@ -1,0 +1,314 @@
+\documentclass{article}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{physics}
+\graphicspath{ {figures/} }
+
+\title{Topological Confinement in Bilayer Graphene}
+
+\begin{document}
+\section{Effective Hamiltonian}
+We begin with the low-energy bilayer Hamiltonian (in the $\psi_{A_{1}}$, $\psi_{B_{1}}$, $\psi_{A_{2}}$, $\psi_{B_{2}}$ basis).
+
+\begin{equation}
+H =
+\begin{bmatrix}
+0 & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} & 0 & \frac{\sqrt{3}a}{2}\kappa^{*}\beta_{nn}\\
+\frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1} & 0 & \beta_{d} & 0 \\
+0 & \beta_{d} & 0  & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} \\
+\frac{\sqrt{3}a}{2}\kappa\beta_{nn} & 0 & \frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1}& 0
+\end{bmatrix}
+\end{equation}
+
+We will further allow the $\beta_{nn}$ coupling terms to vanish and add an additional bias voltage term to the Hamiltonian.
+
+\begin{equation}
+H =
+\begin{bmatrix}
+0 & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} & 0 & 0\\
+\frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1} & 0 & \beta_{d} & 0 \\
+0 & \beta_{d} & 0  & \frac{\sqrt{3}a}{2}\kappa\gamma_{1} \\
+0 & 0 & \frac{\sqrt{3}a}{2}\kappa^{*}\gamma_{1}& 0
+\end{bmatrix}
+ + h_{bias}
+\end{equation}
+
+where the modification to the Hamiltonian due to an interlayer bias voltage is given by
+
+\begin{equation}
+h_{bias} =
+\begin{bmatrix}
+-\frac{V(x)}{2} & 0 & 0 & 0\\
+0& -\frac{V(x)}{2} & 0 & 0 \\
+0 & 0 & \frac{V(x)}{2} & 0 \\
+0 & 0 &  0 & \frac{V(x)}{2} \\
+\end{bmatrix}
+\end{equation}
+
+If we choose to let $\pi = \kappa^{\dagger} = p_{x} + ip_{y}$ (for notational reasons), $\beta_{d} = t_{\perp}$, and the Fermi
+velocity $c = \frac{\sqrt{3}a}{2}\gamma_{1}$, then we have for our full Hamiltonian:
+
+\begin{equation}
+H =
+\begin{bmatrix}
+-\frac{V(x)}{2}  & c\pi^{\dagger} & 0 & 0\\
+c\pi & -\frac{V(x)}{2}  & t_{\perp} & 0 \\
+0 & t_{\perp} & \frac{V(x)}{2}  & c\pi^{\dagger} \\
+0 & 0 & c\pi & \frac{V(x)}{2}
+\end{bmatrix}
+\end{equation}
+
+
+To obtain a nicer form for the effective Hamiltonian,
+we begin by reorganizing the basis: $\{A_{1}, B_{1}, A_{2}, B_{2}\} \rightarrow \{A_{1}, B_{2}, A_{2}, B_{1}\}$. We obtain
+
+\begin{equation}
+H =
+\begin{bmatrix}
+-\frac{V(x)}{2} & 0 & 0 & c\pi^{\dagger}\\
+0& \frac{V(x)}{2}  & c\pi & 0 \\
+0 & c\pi^{\dagger}  & \frac{V(x)}{2}  & t_{\perp} \\
+c\pi & 0 & t_{\perp} & -\frac{V(x)}{2}
+\end{bmatrix} =
+\begin{bmatrix}
+H_{11} & H_{12} \\
+H_{21} & H_{22}
+\end{bmatrix}
+\end{equation}
+We make use of the identity
+\begin{equation}
+det(H - E) = det(H_{11} - H_{12}(H_{22} - E)^{-1}H_{21} - E)det(H_{22} - E)
+\end{equation}
+
+Here, we will assume that $V << t_{\perp}$ and since we are concerned with the
+low energy region where $E << t_{\perp}$, we can make the approximation
+$$
+H_{22} - E \approx H_{22}^{'} =
+\begin{bmatrix}
+0 & t_{\perp}\\
+t_{\perp} & 0
+\end{bmatrix}
+$$
+This approximation allows us to write
+$$
+det(H_{22} - E) = -t_{\perp}^{2}
+$$
+and the effective $2\times2$ Hamiltonian is
+\begin{equation}
+H_{eff} = \left ( H_{11} - H_{12}H_{22}^{-1}H_{21} \right )
+\end{equation}
+We will make use of the fact that $V(x) << t_{\perp}$ to simplify $H_{22}^{-1}$:
+$$
+H_{22}^{-1} = \frac{1}{-(\frac{V(x)}{2})^2 - t_{\perp}^{2}}
+\begin{bmatrix}
+\frac{-V(x)}{2} & -t_{\perp}\\
+-t_{\perp} & \frac{V(x)}{2}
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+\frac{V(x)}{2t_{\perp}^{2}} & \frac{1}{t_{\perp}}\\
+\frac{1}{t_{\perp}} & \frac{-V(x)}{2t_{\perp}^{2}}
+\end{bmatrix}
+$$
+That is,
+\begin{equation}
+H_{eff} =
+\begin{bmatrix}
+\frac{-V(x)}{2} & 0\\
+0 & \frac{V(x)}{2}
+\end{bmatrix}
+-
+\begin{bmatrix}
+0 & c\pi^{\dagger}\\
+c\pi & 0
+\end{bmatrix}
+\begin{bmatrix}
+\frac{V(x)}{2t_{\perp}^{2}} & \frac{1}{t_{\perp}}\\
+\frac{1}{t_{\perp}} & \frac{-V(x)}{2t_{\perp}^{2}}
+\end{bmatrix}
+\begin{bmatrix}
+0 & c\pi^{\dagger}\\
+c\pi & 0
+\end{bmatrix}
+\end{equation}
+$$
+=
+\begin{bmatrix}
+\frac{-V(x)}{2} & 0\\
+0 & \frac{V(x)}{2}
+\end{bmatrix}
+-
+\begin{bmatrix}
+\frac{-V(x)c^{2}|\pi|^{2}}{2t_{\perp}^2} & \frac{(c\pi^{\dagger})^{2}}{t_{\perp}}\\
+\frac{(c\pi)^{2}}{t_{\perp}} & \frac{V(x)c^{2}|\pi|^{2}}{2t_{\perp}^2}
+\end{bmatrix}
+$$
+We finally obtain
+\begin{equation}
+H_{eff} =
+\begin{bmatrix}
+\frac{-V(x)}{2}(1 - \frac{c^{2}|\pi|^{2}}{t_{\perp}^2}) & -\frac{(c\pi^{\dagger})^{2}}{t_{\perp}}\\
+-\frac{(c\pi)^{2}}{t_{\perp}} & \frac{V(x)}{2}(1 - \frac{c^{2}|\pi|^{2}}{t_{\perp}^2})
+\end{bmatrix}
+\end{equation}
+The basis of which is the non-dimer sites ${A_{1}, B_{2}}$.
+Diagonalizing the effective Hamiltonian, we can now see that the energies are given by
+\begin{equation}
+E^{2} = \frac{(c|\pi|)^{4}}{t_{\perp}^{2}} + \frac{V(x)^{2}}{4}\left (1 - \frac{c^{2}|\pi|^{2}}{t_{\perp}^2}\right )^{2}
+\end{equation}
+But if V(x) is significantly less than the hopping parameter $t_{\perp}$, then we can simplify the effective Hamiltonian and corresponding spectrum as
+\begin{equation}
+H_{eff} =
+\begin{bmatrix}
+\frac{-V(x)}{2} & -\frac{(c\pi^{\dagger})^{2}}{t_{\perp}}\\
+-\frac{(c\pi)^{2}}{t_{\perp}} & \frac{V(x)}{2}
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+E^{2} = \frac{(c|\pi|)^{4}}{t_{\perp}^{2}} + \frac{V(x)^{2}}{4}
+\end{equation}
+In order to rewrite the effective Hamiltonian in a quasiclassical form, we begin by factoring out
+$\frac{c^2}{t_{\perp}}$
+\begin{equation}
+H_{eff} =
+\begin{bmatrix}
+\frac{-V(x)t_{\perp}}{2c^{2}} & -(\pi^{\dagger})^{2}\\
+-\pi^{2} & \frac{V(x)t_{\perp}}{2c^{2}}
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+=
+\begin{bmatrix}
+\frac{-V(x)t_{\perp}}{2c^{2}} & -(p_{x}^{2} - p_{y}^{2} - 2ip_{x}p_{y})\\
+-(p_{x}^{2} - p_{y}^{2} + 2ip_{x}p_{y}) & \frac{V(x)t_{\perp}}{2c^{2}}
+\end{bmatrix}
+\end{equation}
+Finally, if we define the momenta to be measured in units of $1/a$, then we finally obtain
+\begin{equation}
+H_{qc} = -\phi(x)\sigma_{z} - (p_{x}^{2} - p_{y}^{2})\sigma_{x} - 2p_{x}p_{y}\sigma_{y}
+\end{equation}
+where we define
+$$
+\phi(x) = \frac{V(x)t_{\perp}a^{2}}{2c^{2}}
+$$
+We can also further define a function $\vec{g}(\vec{p}, x)$ such that
+\begin{equation}
+H_{qc} = \vec{g}(\vec{p}, x)\cdot\vec{\sigma}
+\end{equation}
+The corresponding wave equation is given by
+\begin{equation}
+H(\vec{p}, x)\psi = \epsilon\psi
+\end{equation}
+For $\psi = [u(x), v(x)]$, we obtain
+$$
+-\phi(x)u(x) + (ip_{x} + p_{y})^{2}v(x) = \epsilon u(x)
+$$
+\begin{equation}
+\phi(x)v(x) + (ip_{x} - p_{y})^{2}u(x) = \epsilon v(x)
+\end{equation}
+And using $\partial_{x} = -ip_{x}$ in natural units where $\hbar = 1$,
+$$
+-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}v(x) = \epsilon u(x)
+$$
+\begin{equation}
+\phi(x)v(x) + (\partial_{x} - p_{y})^{2}u(x) = \epsilon v(x)
+\end{equation}
+If we enforce an antisymmetric potential profile (i.e. $\phi(-x) = -\phi(x)$), then,
+$$
+-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}v(x) = \epsilon u(x)
+$$
+\begin{equation}
+-\phi(x)v(-x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon v(-x)
+\end{equation}
+and we can see that if $v(x) = \pm u(-x)$, then we have two systems of equations given by:
+$$
+-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x)
+$$
+$$
+-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x)
+$$
+and
+$$
+-\phi(x)w(x) + (\partial_{x} + p_{y})^{2}(-w(-x)) = \epsilon w(x)
+$$
+$$
+-\phi(x)(-w(x)) + (\partial_{x} + p_{y})^{2}(w(-x)) = -\epsilon w(x)
+$$
+But all of these equations can be solved in the same way, as they are just the same equation. So, for a particular value
+of $p_{y}$, we can obtain an eigenvector $\Psi_{p_{y}} = [u_{p_{y}}(x), u_{p_{y}}(-x)]$ with eigenvalue $\epsilon_{p_{y}}$
+that solves the first set of equations.
+%That is,
+%$$
+%-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x)
+%$$
+We can also obtain a second eigenvector $\Phi_{p_{y}} = [w_{p_{y}}(x), -w_{p_{y}}(-x)]$ that solves the second set of
+equations. From the first eigenvector solution, we have:
+$$
+-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x)
+$$
+$$
+-\phi(x)u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x)
+$$
+Inverting the sign on x gives us
+$$
+-\phi(-x)u(-x) + (-\partial_{x} + p_{y})^{2}u(x) = \epsilon u(-x)
+$$
+$$
+-\phi(-x)u(-x) + (-\partial_{x} + p_{y})^{2}u(x) = -\epsilon(-u(-x))
+$$
+And using the antisymmetry of the potential profile:
+$$
+-\phi(x)(-u(-x)) + (-\partial_{x} + p_{y})^{2}u(x) = \epsilon u(-x)
+$$
+$$
+-\phi(x)(-u(-x)) + (-\partial_{x} + p_{y})^{2}u(x) = -\epsilon(-u(-x))
+$$
+We know the solutions to these equations are $[]$
+If we swap the sign of $x$, we obtain the equivalent result
+$$
+-\phi(-x)u(-x) + (\partial_{x} - p_{y})^{2}u(x) = \epsilon u(-x)
+$$
+And making use of the antisymmetry of the potential profile, we can write this as
+$$
+-\phi(x)(-u(-x)) + (\partial_{x} - p_{y})^{2}u(x) = -\epsilon(-u(-x))
+$$
+So, we therefore obtain another solution $\Phi_{p_{y}} = [-u_{-p_{y}}(-x), u_{-p_{y}}(x)]$ with
+eigenvalue $-\epsilon_{-p_{y}}$. Our goal now is to analyze the dispersion $\epsilon(p_{y})$ to
+observe the effect of the form of $\phi(x)$.
+
+\section{Step Kink}
+We will consider a step-like kink $\phi(x) = \phi_{0}sgn(x)$, where
+\begin{equation}
+sgn(x) = \left\{\begin{matrix}
+ 1& x > 0\\
+ 0& x = 0\\
+ -1 & x < 0
+\end{matrix}\right.
+\end{equation}
+
+Our wave equation becomes
+\begin{equation}
+\begin{matrix}
+-u(x) + (\partial_{x} + p_{y})^{2}v(x) = \epsilon u(x) & x > 0\\
+u(x) + (\partial_{x} + p_{y})^{2}v(x) = \epsilon u(x) & x < 0
+\end{matrix}
+\end{equation}
+
+For $\Psi = [u(x), v(x) = u(-x)]$, we have
+\begin{equation}
+\begin{matrix}
+-\phi_{0}u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x) & x > 0\\
+\phi_{0}u(x) + (\partial_{x} + p_{y})^{2}u(-x) = \epsilon u(x) & x < 0
+\end{matrix}
+\end{equation}
+In the $x > 0$ region, we can rewrite this as
+\begin{equation}
+-\phi_{0}u(x) + (\partial_{x}^{2} + \partial_{x}p_{y} + p_{y}^{2})u(-x) = \epsilon u(x)
+\end{equation}
+where we use the operator algebra $\partial_{x}p_{y} = p_{}$
+
+In both the $+x$ and $-x$ regions, the wave equation takes the form of a second order differential equation,
+which has general solution $\Psi \propto e^{-\lambda x}$, where $\lambda$ can be a complex root.
+
+\end{document}
