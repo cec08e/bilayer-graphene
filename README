@@ -1,13 +1,1 @@
-This package includes a set of notes and programs related to the tight binding (LCAO) model and general properties of graphene. Notes are written in LaTeX and included as both .tex files and compiled .pdf files. Programs are written in Python and assume Python version 2.7.12. Programs have a number of dependencies beyond the standard library - please consult requirements.txt for dependencies.
-
-In Linux, the required environment may be reconstructed as follows using virtualenv:
-
-$ virtualenv bgenv
-$ source bgenv/bin/activate
-$ pip install -r requirements.txt
-
-To deactivate the virtual environment:
-
-$ deactivate bgenv
-
-Note that the requirements.txt file contains the requirements for the code directory files, but not for the notes directory files. 
+This package includes a set of notes and programs related to the tight binding (LCAO) model and general properties of graphene. Notes are written in LaTeX and included as both .tex files and compiled .pdf files. 
